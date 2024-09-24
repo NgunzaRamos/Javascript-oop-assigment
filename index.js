@@ -4,6 +4,7 @@ class BlogPost {
       this.content = content;
       this.author = author;
       this.createdAt = createdAt;
+      this.id =BlogPost.nextId++;
     }
   }
   
@@ -15,7 +16,7 @@ class BlogPost {
     }
   
      createPost(title, content){
-        const newPost = new BlobPost (title, content, this.username);
+        const newPost = new BlogPost (title, content, this.username);
         this.blogPosts.push(newPost);
         console.log(`Post created: ${title} by ${this.username}`)
      }
@@ -23,10 +24,10 @@ class BlogPost {
      editPost(title, newContent){
          const postIndex = this.posts.findIndex((post) => post.title ===title);
          if (postIndex !== -1){
-            this.BlogPosts[postIndex].content = newContent;
+            this.blogPosts[postIndex].content = newContent;
             console.log(`Post edited: ${title} by ${this.fullName}` );
                }else{
-                console.log(`Post not found: ${title}`);
+                console.log(`Post not found: ${id}`);
                }
      }
 
@@ -43,7 +44,7 @@ class BlogPost {
      displayPosts() {
         console.log(`Posts by ${this.fullName}:`);
         this.blogPosts.forEach((post) => {
-          console.log(`Title: ${post.title}, Content: ${post.content}, Created at: ${post.createdAt}`);
+          console.log(`ID: ${post.id}, Title: ${post.title}, Content: ${post.content}, Created at: ${post.createdAt}`);
         });
       }
 
